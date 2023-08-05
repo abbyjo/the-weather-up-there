@@ -1,13 +1,33 @@
-:root {
-  --darkblue: #2A363B ;
-  --green: #99B898;
-  --orange: #FF847C  ;
-  --red: #E84A5F;
-  --yellow: #FECEAB;
-}
 
-.custom-header {
-    background-color: var(--darkblue); 
-    color: var(--yellow);
+*{
     font-family: 'Baloo 2', cursive;
+}
+.custom-header {
+    color: white; 
+    background-color: #bc1f1f;
+    font-family: 'Cherry Bomb One', cursive;
+  }
+
+  .custom-card {
+    border-color:white;
+    background-color: #ffdcdc;
+  }
+
+  .custom-main-card {
+    border-color:white;
+    background-image:linear-gradient(#ffdcdc, white);
+  }
+
+  .custom-main-card h3 , h4, form h3, h5{
+    font-family: 'Cherry Bomb One', cursive;
+    color:#e32d2d
+  }
+
+  .custom-sidebar {
+    border-color: white;
+  }
+
+.custom-btn {
+    background-color:#bc1f1f;
+    color: white; 
   }
