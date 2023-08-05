@@ -1,0 +1,13 @@
+:root {
+  --darkblue: #2A363B ;
+  --green: #99B898;
+  --orange: #FF847C  ;
+  --red: #E84A5F;
+  --yellow: #FECEAB;
+}
+
+.custom-header {
+    background-color: var(--darkblue); 
+    color: var(--yellow);
+    font-family: 'Baloo 2', cursive;
+  }
