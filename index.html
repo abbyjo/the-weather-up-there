@@ -23,7 +23,7 @@
                 <form>
                     <h3 class="p-3 text-center">Search By City:</h3>
                         <div class="input-group p-3 mb-3">
-                            <input type="text" class="form-control" placeholder="Miami, FL" aria-label="City name">
+                            <input id="searchbox" type="text" class="form-control" placeholder="Miami" aria-label="City name">
                             <button class="btn btn-outline-danger" type="button" id="search-btn">Search</button>
                         </div>
                     <div class="card p-2 m-3 custom-sidebar">
@@ -37,11 +37,11 @@
             <!-- Weather: present and 5 day forecast-->
             <div class="col text-left">
                 <div class="card p-2 m-3 custom-main-card text-center">
-                    <h3>Current City ⋆ 8/25/23</h3>
+                    <h3 id="today">Current City ⋆ 8/25/23</h3>
                     <ul class="list-group-flush">
-                        <li class="list-group-item">Temp:</li>
-                        <li class="list-group-item">Wind:</li>
-                        <li class="list-group-item">Humidity:</li>
+                        <li id="todayTemp" class="list-group-item">Temp:</li>
+                        <li id="todayWind" class="list-group-item">Wind:</li>
+                        <li id="todayHumid" class="list-group-item">Humidity:</li>
                     </ul>
                 </div>
                 <h4 class="text-center">5 Day Forecast</h4>
