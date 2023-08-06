@@ -1,5 +1,6 @@
 var APIkey = "d5addee24f3ceadd8bc7ee2aecd4ce24"
 var city = $("#searchbox").val()
+var currentDate = dayjs().format('M/D/YY')
 var currentWeather = $('#today')
 
 function getWeatherAPI () {
@@ -10,8 +11,8 @@ function getWeatherAPI () {
             return response.json();
         })
         .then (function (data){
-            console.log(data.main.temp);
-            $('#today').text(`${data.name} ⋆ 8/25/23`)
+            console.log(data.weather[0].icon);
+            $('#today').text(`${data.name} ⋆ ${currentDate}`)
 
         })
 
