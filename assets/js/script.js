@@ -1,13 +1,15 @@
 var APIkey = "d5addee24f3ceadd8bc7ee2aecd4ce24"
-var city = $("#searchbox").val()
+var searchBtn = $('#search-btn')
+var city = $("#searchbox")
 var currentDate = dayjs().format('M/D/YY')
 var currentCity = $('#today')
 var currentTemp = $('#todayTemp')
 var currentWind = $('#todayWind')
 var currentHumid = $('#todayHumid')
 
+//API call to fetch and display current weather in searched city
 function weatherToday() {
-    var requestURL = `https://api.openweathermap.org/data/2.5/weather?q=Miami&appid=d5addee24f3ceadd8bc7ee2aecd4ce24&units=imperial`;
+    var requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${city.val()}&appid=d5addee24f3ceadd8bc7ee2aecd4ce24&units=imperial`;
 
     fetch(requestURL)
         .then(function (response) {
@@ -17,16 +19,15 @@ function weatherToday() {
             var iconCode = data.weather[0].icon;
             var iconurl = `http://openweathermap.org/img/w/${iconCode}.png`;
             currentCity.text(`${data.name} ⋆ ${currentDate}`);
-            currentCity.append(`<img id="t-icon" width="50px" height="50px"></img>`)
+            currentCity.prepend(`<img id="t-icon" width="50px" height="50px"></img>`)
             $('#t-icon').attr('src', iconurl)
             currentTemp.text(`Temp: ${data.main.temp} °F`)
             currentWind.text(`Wind Speed: ${data.wind.speed} mph`)
             currentHumid.text(`Humidity: ${data.main.humidity}%`)
-
         })
 }
 
-// weatherToday()
+searchBtn.on("click", weatherToday)
 
 
 
