@@ -34,63 +34,31 @@ function weatherWeek() {
         .then (function (response) {
             return response.json();
         })
-        .then (function (data){
+        .then (function (data){ //consider consolidating this w/a for loop?
             $('#day-1').text(dayjs.unix(data.list[7].dt).format('M/D/YY'))
             $('#day-2').text(dayjs.unix(data.list[15].dt).format('M/D/YY'))
             $('#day-3').text(dayjs.unix(data.list[23].dt).format('M/D/YY'))
             $('#day-4').text(dayjs.unix(data.list[31].dt).format('M/D/YY'))
             $('#day-5').text(dayjs.unix(data.list[39].dt).format('M/D/YY'))
+            $('#T1').text(`Temp: ${data.list[7].main.temp}°F`)
+            $('#T2').text(`Temp: ${data.list[15].main.temp}°F`)
+            $('#T3').text(`Temp: ${data.list[23].main.temp}°F`)
+            $('#T4').text(`Temp: ${data.list[31].main.temp}°F`)
+            $('#T5').text(`Temp: ${data.list[39].main.temp}°F`)
+            $('#W1').text(`Wind: ${data.list[7].wind.speed} mph`)
+            $('#W2').text(`Wind: ${data.list[15].wind.speed} mph`)
+            $('#W3').text(`Wind: ${data.list[23].wind.speed} mph`)
+            $('#W4').text(`Wind: ${data.list[31].wind.speed} mph`)
+            $('#W5').text(`Wind: ${data.list[39].wind.speed} mph`)
+            $('#H1').text(`Humidity: ${data.list[7].main.humidity}%`)
+            $('#H2').text(`Humidity: ${data.list[15].main.humidity}%`)
+            $('#H3').text(`Humidity: ${data.list[23].main.humidity}%`)
+            $('#H4').text(`Humidity: ${data.list[31].main.humidity}%`)
+            $('#H5').text(`Humidity: ${data.list[39].main.humidity}%`)
         })
 
 }
 
 searchBtn.on("click", weatherToday)
 
-weatherWeek()
-
-
-
-// {
-//     "coord": {
-//         "lon": -80.1937,
-//         "lat": 25.7743
-//     },
-//     "weather": [
-//         {
-//             "id": 804,
-//             "main": "Clouds",
-//             "description": "overcast clouds",
-//             "icon": "04d"
-//         }
-//     ],
-//     "base": "stations",
-//     "main": {
-//         "temp": 91.18,
-//         "feels_like": 103.78,
-//         "temp_min": 87.01,
-//         "temp_max": 95.02,
-//         "pressure": 1016,
-//         "humidity": 72
-//     },
-//     "visibility": 10000,
-//     "wind": {
-//         "speed": 4,
-//         "deg": 127,
-        // "gust": 10
-//     },
-//     "clouds": {
-//         "all": 95
-//     },
-//     "dt": 1691359226,
-//     "sys": {
-//         "type": 2,
-//         "id": 2009435,
-//         "country": "US",
-//         "sunrise": 1691318965,
-//         "sunset": 1691366637
-//     },
-//     "timezone": -14400,
-//     "id": 4164138,
-//     "name": "Miami",
-//     "cod": 200
-// }
+// weatherWeek()
