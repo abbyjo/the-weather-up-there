@@ -9,7 +9,7 @@ var currentHumid = $('#todayHumid')
 
 //API call to fetch and display current weather in searched city
 function weatherToday() {
-    var requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${city.val()}&appid=d5addee24f3ceadd8bc7ee2aecd4ce24&units=imperial`;
+    var requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${city.val()}&appid=${APIkey}&units=imperial`;
 
     fetch(requestURL)
         .then(function (response) {
@@ -27,9 +27,26 @@ function weatherToday() {
         })
 }
 
+function weatherWeek() {
+    var fiveDayURL = `https://api.openweathermap.org/data/2.5/forecast?q=Miami&appid=d5addee24f3ceadd8bc7ee2aecd4ce24&units=imperial`
+
+    fetch(fiveDayURL)
+        .then (function (response) {
+            return response.json();
+        })
+        .then (function (data){
+            $('#day-1').text(dayjs.unix(data.list[7].dt).format('M/D/YY'))
+            $('#day-2').text(dayjs.unix(data.list[15].dt).format('M/D/YY'))
+            $('#day-3').text(dayjs.unix(data.list[23].dt).format('M/D/YY'))
+            $('#day-4').text(dayjs.unix(data.list[31].dt).format('M/D/YY'))
+            $('#day-5').text(dayjs.unix(data.list[39].dt).format('M/D/YY'))
+        })
+
+}
+
 searchBtn.on("click", weatherToday)
 
-
+weatherWeek()
 
 
 
