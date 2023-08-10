@@ -64,17 +64,23 @@ function weatherWeek() {
 
 }
 function saveSearch() {
-    $("#saved-search").append(`<a id="savedSearchBtn" href="#" class="my-2 btn custom-btn">${city.val()}</a>`);
-    // localStorage.setItem("city",city.val());
+    $("#saved-search").append(`<a href="#" class="my-2 btn custom-btn">${city.val()}</a>`);
     var newCity = city.val()
     if (localStorage.getItem('city')== null){
         localStorage.setItem('city', '[]')
     }
-    var savedSearches = JSON.parse(localStorage.getItem('city'));
-    savedSearches.push(newCity);
-    localStorage.setItem('city', JSON.stringify(savedSearches))
+    var savedCities = JSON.parse(localStorage.getItem('city'));
+    savedCities.push(newCity);
+    localStorage.setItem('city', JSON.stringify(savedCities))
 }
 
+function showSearches(){
+    var savedCities = JSON.parse(localStorage.getItem('city'));
+    savedCities.forEach( savedCities =>{
+        $("#saved-search").append(`<a href="#" class="my-2 btn custom-btn">${savedCities.city}</a>`)
+        //displays buttons, need to workshop city name display.
+    })
+}
 
 function getWeather(){
     weatherToday();
@@ -83,6 +89,9 @@ function getWeather(){
 }
 
 searchBtn.on("click", getWeather)
+//function to re-submit search upon clicking saved searches
 savedSearches.on("click",function(){
     
 })
+
+showSearches()
