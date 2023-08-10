@@ -6,6 +6,7 @@ var currentCity = $('#today')
 var currentTemp = $('#todayTemp')
 var currentWind = $('#todayWind')
 var currentHumid = $('#todayHumid')
+var savedSearches = $('#saved-search')
 
 //API call to fetch and display current weather in searched city
 function weatherToday() {
@@ -35,7 +36,7 @@ function weatherWeek() {
         .then (function (response) {
             return response.json();
         })
-        .then (function (data){ //consider consolidating this w/a for loop?
+        .then (function (data){ 
             $("h4").removeClass("d-none")
             $("#5-day").removeClass("d-none")
             $('#day-1').text(dayjs.unix(data.list[7].dt).format('M/D/YY'))
@@ -62,10 +63,26 @@ function weatherWeek() {
         })
 
 }
+function saveSearch() {
+    $("#saved-search").append(`<a id="savedSearchBtn" href="#" class="my-2 btn custom-btn">${city.val()}</a>`);
+    // localStorage.setItem("city",city.val());
+    var newCity = city.val()
+    if (localStorage.getItem('city')== null){
+        localStorage.setItem('city', '[]')
+    }
+    var savedSearches = JSON.parse(localStorage.getItem('city'));
+    savedSearches.push(newCity);
+    localStorage.setItem('city', JSON.stringify(savedSearches))
+}
+
 
 function getWeather(){
     weatherToday();
-    weatherWeek()
+    weatherWeek();
+    saveSearch()
 }
 
 searchBtn.on("click", getWeather)
+savedSearches.on("click",function(){
+    
+})
