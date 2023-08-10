@@ -27,14 +27,17 @@ function weatherToday() {
         })
 }
 
+//API call to fetch and display 5-day forecast in searched city
 function weatherWeek() {
-    var fiveDayURL = `https://api.openweathermap.org/data/2.5/forecast?q=Miami&appid=d5addee24f3ceadd8bc7ee2aecd4ce24&units=imperial`
+    var fiveDayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city.val()}&appid=${APIkey}&units=imperial`
 
     fetch(fiveDayURL)
         .then (function (response) {
             return response.json();
         })
         .then (function (data){ //consider consolidating this w/a for loop?
+            $("h4").removeClass("d-none")
+            $("#5-day").removeClass("d-none")
             $('#day-1').text(dayjs.unix(data.list[7].dt).format('M/D/YY'))
             $('#day-2').text(dayjs.unix(data.list[15].dt).format('M/D/YY'))
             $('#day-3').text(dayjs.unix(data.list[23].dt).format('M/D/YY'))
@@ -55,10 +58,14 @@ function weatherWeek() {
             $('#H3').text(`Humidity: ${data.list[23].main.humidity}%`)
             $('#H4').text(`Humidity: ${data.list[31].main.humidity}%`)
             $('#H5').text(`Humidity: ${data.list[39].main.humidity}%`)
+            
         })
 
 }
 
-searchBtn.on("click", weatherToday)
+function getWeather(){
+    weatherToday();
+    weatherWeek()
+}
 
-// weatherWeek()
+searchBtn.on("click", getWeather)
