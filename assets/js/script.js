@@ -77,8 +77,7 @@ function saveSearch() {
 function showSearches(){
     var savedCities = JSON.parse(localStorage.getItem('city'));
     savedCities.forEach( savedCities =>{
-        $("#saved-search").append(`<a href="#" class="my-2 btn custom-btn">${savedCities.city}</a>`)
-        //displays buttons, need to workshop city name display.
+        $("#saved-search").append(`<a href="#" class="my-2 btn custom-btn">${savedCities}</a>`)
     })
 }
 
@@ -89,9 +88,12 @@ function getWeather(){
 }
 
 searchBtn.on("click", getWeather)
-//function to re-submit search upon clicking saved searches
-savedSearches.on("click",function(){
-    
+
+//Re-runs previous searches upon click
+savedSearches.on("click",function(event){
+    city.attr("value", event.target.text)
+    weatherToday()
+    weatherWeek()
 })
 
 showSearches()
