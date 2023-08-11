@@ -59,7 +59,11 @@ function weatherWeek() {
             $('#H3').text(`Humidity: ${data.list[23].main.humidity}%`)
             $('#H4').text(`Humidity: ${data.list[31].main.humidity}%`)
             $('#H5').text(`Humidity: ${data.list[39].main.humidity}%`)
-            
+            $('#day-1').append(`<img src='http://openweathermap.org/img/w/${data.list[7].weather[0].icon}.png' width="50px" height="50px"></img>`)
+            $('#day-2').append(`<img src='http://openweathermap.org/img/w/${data.list[15].weather[0].icon}.png' width="50px" height="50px"></img>`)
+            $('#day-3').append(`<img src='http://openweathermap.org/img/w/${data.list[23].weather[0].icon}.png' width="50px" height="50px"></img>`)
+            $('#day-4').append(`<img src='http://openweathermap.org/img/w/${data.list[31].weather[0].icon}.png' width="50px" height="50px"></img>`)
+            $('#day-5').append(`<img src='http://openweathermap.org/img/w/${data.list[39].weather[0].icon}.png' width="50px" height="50px"></img>`)
         })
 
 }
