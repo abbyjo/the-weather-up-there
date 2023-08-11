@@ -18,6 +18,8 @@ On the left hand side of the page you can input a city name of your choosing. Up
 
 <a href="https://stackoverflow.com/questions/44177417/how-to-display-openweathermap-weather-icon">This post on Stack Overflow</a> helped me figure out how to add weather icons to each section!<br>
 <a href="https://stackoverflow.com/questions/70998906/how-do-i-access-each-item-of-an-array-stored-in-local-storage-individually">This post on Stack Overflow</a> helped me figure out how to save user input into local storage as an array!<br>
+<a href="https://youtu.be/2hJ1rTANVnk">This video</a> was also helpful in helping me figure out how to utilize local storage!
+
 
 ## License
 MIT License
